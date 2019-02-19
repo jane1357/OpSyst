@@ -12,7 +12,7 @@ using namespace std;
 
 int main()
 {
-    ifstream fin("C:\\Users\\123\\Desktop\\6sem\\opersystems\\homework\\input.txt");
+    ifstream fin("..\\input.txt");
     int k = 0;
     int x;
     char q[80];

@@ -1,14 +1,18 @@
 #include <iostream>
-#include <Windows.h>
+#include <windows.h>
 #include <sysinfoapi.h>
 #include <stdio.h>
 using namespace std;
+extern "C" __declspec(dllimport)
+BOOL __stdcall GetPhysicallyInstalledSystemMemory(PULONGLONG);
 int main()
 {
-    MEMORYSTATUSEX ram;
+    ULONGLONG TotalMemoryInKilobytes;
+    GetPhysicallyInstalledSystemMemory(&TotalMemoryInKilobytes);
+    cout<<TotalMemoryInKilobytes/1024/1024<<" gb";
+//    MEMORYSTATUSEX ram;
 
-    GlobalMemoryStatusEx(&ram); // Заполняем структуру SYSTEM_INFO информацией о системе.
-
-    cout<<(" RAM: %u\n", ram.ullTotalPhys/1024/1024/1024)<<" gb";
+//    GlobalMemoryStatusEx(&ram);
+//    cout<<(" RAM: %u\n", ram.ullTotalPhys/1024/1024/1024)<<" gb";
 
 }
